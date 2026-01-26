@@ -105,37 +105,33 @@ async function fetchRawFile(path: string): Promise<string> {
 
 // Fetch single blog post by slug
 export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
-  try {
-    const content = await fetchRawFile(`${slug}.md`)
-    const { data, content: markdownContent } = matter(content)
+  const content = await fetchRawFile(`${slug}.md`)
+  const { data, content: markdownContent } = matter(content)
 
-    // Get file SHA for cache validation
-    const response = await fetch(`${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents/${slug}.md`, {
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-        ...(process.env.GITHUB_TOKEN && {
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        }),
-      },
-      next: { revalidate: 60 },
-    })
+  // Get file SHA for cache validation
+  const response = await fetch(`${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents/${slug}.md`, {
+    headers: {
+      Accept: "application/vnd.github.v3+json",
+      ...(process.env.GITHUB_TOKEN && {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      }),
+    },
+    next: { revalidate: 60 },
+  })
 
-    const fileData = response.ok ? await response.json() : { sha: "" }
+  // We don't want to throw if the metadata fetch fails, just treat as no SHA
+  const fileData = response.ok ? await response.json() : { sha: "" }
 
-    return {
-      slug,
-      title: data.title || slug,
-      description: data.description || "",
-      date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
-      tags: Array.isArray(data.tags) ? data.tags : [],
-      image: data.image || "",
-      author: data.author || { name: "Anonymous", github: "" },
-      content: markdownContent,
-      sha: fileData.sha || "",
-    }
-  } catch (error) {
-    console.error(`Error fetching blog post ${slug}:`, error)
-    return null
+  return {
+    slug,
+    title: data.title || slug,
+    description: data.description || "",
+    date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    image: data.image || "",
+    author: data.author || { name: "Anonymous", github: "" },
+    content: markdownContent,
+    sha: fileData.sha || "",
   }
 }
 
