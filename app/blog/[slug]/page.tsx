@@ -6,7 +6,7 @@ import { format } from "date-fns"
 import { ArrowLeft, Calendar, Clock, Github, User } from "lucide-react"
 import { fetchBlogPost, fetchBlogList } from "@/lib/github"
 import { parseMarkdown, extractTableOfContents, getReadingTime } from "@/lib/markdown"
-// import { extractTableOfContents } from "@/lib/toc"
+
 import { TableOfContents } from "@/components/table-of-contents"
 import { CopyLinkButton } from "@/components/copy-link-button"
 import { AdUnit } from "@/components/ad-unit"
@@ -21,11 +21,7 @@ export const runtime = "edge"
 
 // export const revalidate = 60 // Revalidate every minute
 
-// Generate static params for all blog posts
-export async function generateStaticParams() {
-  const blogs = await fetchBlogList()
-  return blogs.map((blog) => ({ slug: blog.slug }))
-}
+// generateStaticParams removed to allow dynamic Edge Runtime rendering
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
