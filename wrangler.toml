@@ -1,9 +1,8 @@
 name = "gitfool"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
 
 [vars]
-NEXT_PUBLIC_BASE_URL = "https://blog.omthakur.in"
+NEXT_PUBLIC_BASE_URL = "https://blogs.omthakur.in"
 NEXT_PUBLIC_GOOGLE_ADSENSE_ID = "ca-pub-6802788446603968"
-
-pages_build_output_dir = ".vercel/output/static"
