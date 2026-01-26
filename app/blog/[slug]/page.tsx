@@ -6,8 +6,10 @@ import { format } from "date-fns"
 import { ArrowLeft, Calendar, Clock, Github, User } from "lucide-react"
 import { fetchBlogPost, fetchBlogList } from "@/lib/github"
 import { parseMarkdown, extractTableOfContents, getReadingTime } from "@/lib/markdown"
+// import { extractTableOfContents } from "@/lib/toc"
 import { TableOfContents } from "@/components/table-of-contents"
 import { CopyLinkButton } from "@/components/copy-link-button"
+import { AdUnit } from "@/components/ad-unit"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
@@ -220,16 +222,22 @@ export default async function BlogPostPage({ params }: PageProps) {
 
               {/* Article content */}
               <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+
+              {/* Bottom Ad */}
+              <div className="mt-12 pt-8 border-t border-border">
+                <AdUnit format="auto" slotId="auto-bottom-ad" />
+              </div>
             </div>
 
             {/* Sidebar with ToC */}
-            {tableOfContents.length > 0 && (
-              <aside className="hidden lg:block w-64 shrink-0">
-                <div className="sticky top-24">
-                  <TableOfContents items={tableOfContents} />
-                </div>
-              </aside>
-            )}
+            <aside className="hidden lg:block w-64 shrink-0">
+              <div className="sticky top-24 flex flex-col gap-8">
+                {tableOfContents.length > 0 && <TableOfContents items={tableOfContents} />}
+
+                {/* Sidebar Ad */}
+                <AdUnit format="rectangle" slotId="auto-sidebar-ad" className="min-h-[250px]" />
+              </div>
+            </aside>
           </div>
         </div>
       </article>
