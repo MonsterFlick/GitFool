@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Geist_Mono, Dancing_Script } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -84,7 +83,6 @@ export default function RootLayout({
           </div>
           <WelcomePopup />
         </ThemeProvider>
-        <Analytics />
         <GoogleAdSense />
       </body>
     </html>

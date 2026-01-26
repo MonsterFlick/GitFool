@@ -43,6 +43,7 @@ interface GitHubFile {
 // Fetch list of markdown files from repo
 export async function fetchBlogList(): Promise<BlogMetadata[]> {
   try {
+    console.log(`Fetching blogs from: ${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents`)
     const response = await fetch(`${GITHUB_API_BASE}/repos/${GITHUB_REPO}/contents`, {
       headers: {
         Accept: "application/vnd.github.v3+json",
@@ -54,10 +55,12 @@ export async function fetchBlogList(): Promise<BlogMetadata[]> {
     })
 
     if (!response.ok) {
+      console.error(`GitHub API error: ${response.status} ${response.statusText}`)
       throw new Error(`GitHub API error: ${response.status}`)
     }
 
     const files: GitHubFile[] = await response.json()
+    console.log(`Found ${files.length} files in repo`)
     const markdownFiles = files.filter((file) => file.type === "file" && file.name.endsWith(".md"))
 
     const blogs = await Promise.all(
