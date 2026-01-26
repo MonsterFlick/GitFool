@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next"
 import { fetchBlogList } from "@/lib/github"
 
+export const runtime = "edge"
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://gitfool.vercel.app"
 

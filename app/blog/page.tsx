@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   },
 }
 
+export const runtime = "edge"
+
 // export const revalidate = 60 // Revalidate every minute
 
 export default async function BlogPage() {

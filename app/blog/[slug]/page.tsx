@@ -17,6 +17,8 @@ interface PageProps {
   params: Promise<{ slug: string }>
 }
 
+export const runtime = "edge"
+
 // export const revalidate = 60 // Revalidate every minute
 
 // Generate static params for all blog posts
