@@ -1,117 +1,58 @@
-# Blog Post Template for GitFool
+# Blog Post Format
 
-This document describes the format and structure for blog posts in the GitFool blog.
+Use this template when creating blog posts for GitFool.
 
-## File Location
+## Required Frontmatter
 
-All blog posts should be created as markdown files (`.md`) in the [GitFool-Blogs](https://github.com/MonsterFlick/GitFool-Blogs) repository.
-
-## Frontmatter Format (Required)
-
-Every blog post **must** start with YAML frontmatter:
+Every blog post must start with this YAML block:
 
 ```yaml
 ---
-title: "Your Blog Title Here"
-description: "A compelling 150-160 character description for SEO and previews"
+title: "Your Blog Title"
+description: "Short description (150-160 characters)"
 date: "2026-01-26"
 tags:
-  - javascript
-  - react
-  - web-development
-image: "https://example.com/path-to-cover-image.jpg"
+  - tag1
+  - tag2
+image: "https://example.com/cover-image.jpg"
 author:
-  name: "Your Name"
-  github: "your-github-username"
+  name: "Om Thakur"
+  github: "MonsterFlick"
 ---
 ```
 
-## Field Descriptions
-
-### Required Fields
-
-| Field | Description | SEO Impact |
-|-------|-------------|------------|
-| `title` | Main heading of the blog post (max 60 characters for SEO) | **High** - Used in search results and page title |
-| `description` | Brief summary (150-160 characters ideal) | **High** - Appears in search snippets |
-| `date` | Publication date in `YYYY-MM-DD` format | **Medium** - Used for sorting and freshness signals |
-| `tags` | Array of relevant topic keywords | **High** - Used for filtering and keywords meta tag |
-| `author.name` | Author's display name | **Medium** - Shows in article schema |
-
-### Optional Fields
-
-| Field | Description | SEO Impact |
-|-------|-------------|------------|
-| `image` | URL to cover/hero image (1200x630px recommended) | **High** - Used in social shares and rich snippets |
-| `author.github` | Author's GitHub username (without @) | **Low** - Used for linking to author profile |
-
-## Content Guidelines
-
-### Headings
-- Use `##` for main sections (H2)
-- Use `###` for subsections (H3)
-- Don't use `#` (H1) in content - the title serves as H1
-
-### Code Blocks
-Use fenced code blocks with language specification:
-~~~markdown
-```javascript
-const example = "Hello World";
-```
-~~~
-
-### Images in Content
-```markdown
-![Alt text describing the image](https://example.com/image.jpg)
-```
-
-### Links
-```markdown
-[Link text](https://example.com)
-```
-
-## SEO Best Practices
-
-1. **Title**: Keep under 60 characters, include primary keyword
-2. **Description**: 150-160 characters, include call-to-action
-3. **Tags**: 3-5 relevant keywords that users might search for
-4. **Image**: Use high-quality images with descriptive alt text
-5. **Content**: Aim for 1,500+ words for better ranking
-6. **Headings**: Use descriptive headings with keywords
-
-## Example Blog Post
+## Example Blog
 
 ```markdown
 ---
-title: "Getting Started with React Hooks"
-description: "Learn how to use React Hooks to simplify your components. A beginner-friendly guide with practical examples."
+title: "Getting Started with React"
+description: "Learn React basics with practical examples and best practices for beginners."
 date: "2026-01-26"
 tags:
   - react
   - javascript
-  - hooks
   - frontend
-image: "https://example.com/react-hooks-cover.jpg"
+image: "https://example.com/react-cover.jpg"
 author:
   name: "Om Thakur"
   github: "MonsterFlick"
 ---
 
-React Hooks revolutionized the way we write React components...
+Your blog content goes here...
 
-## What are React Hooks?
+## First Section
 
-Hooks are functions that let you "hook into" React state and lifecycle features...
+Content...
 
-### useState Hook
+## Second Section
 
-The most basic hook for managing state:
-
-```javascript
-const [count, setCount] = useState(0);
+More content...
 ```
 
-## Conclusion
+## Quick Tips
 
-React Hooks simplify component logic and make code more reusable...
-```
+- **Title**: Max 60 characters
+- **Description**: 150-160 characters  
+- **Tags**: 3-5 relevant keywords
+- **Image**: 1200x630px recommended
+- **Date**: YYYY-MM-DD format
