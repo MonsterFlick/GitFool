@@ -3,7 +3,7 @@ import { FeaturedBlogs } from "@/components/featured-blogs"
 import { AboutSection } from "@/components/about-section"
 import { fetchBlogList } from "@/lib/github"
 
-export const revalidate = 60 // Revalidate every minute
+// export const revalidate = 60 // Revalidate every minute
 
 export default async function HomePage() {
   const blogs = await fetchBlogList()

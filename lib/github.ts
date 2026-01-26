@@ -50,7 +50,7 @@ export async function fetchBlogList(): Promise<BlogMetadata[]> {
           Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         }),
       },
-      next: { revalidate: 60 }, // Revalidate every minute
+      cache: "no-store",
     })
 
     if (!response.ok) {
@@ -94,7 +94,7 @@ export async function fetchBlogList(): Promise<BlogMetadata[]> {
 // Fetch raw file content
 async function fetchRawFile(path: string): Promise<string> {
   const response = await fetch(`${GITHUB_RAW_BASE}/${GITHUB_REPO}/main/${path}`, {
-    next: { revalidate: 60 },
+    cache: "no-store",
   })
 
   if (!response.ok) {
