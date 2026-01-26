@@ -120,6 +120,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -133,6 +134,15 @@
 /* Smooth scrolling and article prose styles */
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
 }
 
 /* Prose styles for markdown content */
@@ -152,12 +162,15 @@ html {
 .prose h1 {
   @apply text-3xl md:text-4xl;
 }
+
 .prose h2 {
   @apply text-2xl md:text-3xl;
 }
+
 .prose h3 {
   @apply text-xl md:text-2xl;
 }
+
 .prose h4 {
   @apply text-lg md:text-xl;
 }
