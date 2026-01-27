@@ -3,8 +3,7 @@ import type { MetadataRoute } from "next"
 export const runtime = "edge"
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://gitfool.vercel.app"
-
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://blogs.omthakur.in"
     return {
         rules: [
             {
