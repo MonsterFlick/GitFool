@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { WelcomePopup } from "@/components/welcome-popup"
-import { GoogleAdSense } from "@/components/google-adsense"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
@@ -83,7 +82,6 @@ export default function RootLayout({
           </div>
           <WelcomePopup />
         </ThemeProvider>
-        <GoogleAdSense />
       </body>
     </html>
   )

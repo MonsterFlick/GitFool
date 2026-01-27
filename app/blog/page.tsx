@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { fetchBlogList, fetchAllTags } from "@/lib/github"
 import { BlogList } from "@/components/blog-list"
-import { AdUnit } from "@/components/ad-unit"
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -43,16 +42,10 @@ export default async function BlogPage() {
         </p>
       </div>
 
-      {/* Top Ad */}
-      <AdUnit format="horizontal" className="mb-8" slotId="blog-list-top" />
-
       {/* Blog list with search and filters */}
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
         <BlogList blogs={blogs} allTags={allTags} />
       </div>
-
-      {/* Bottom Ad */}
-      <AdUnit format="auto" className="mt-12" slotId="blog-list-bottom" />
     </div>
   )
 }
